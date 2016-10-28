@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template, request, json, url_for, redirect, session
 import urllib
 from subprocess import Popen, PIPE, STDOUT
-from flask.ext.pymongo import PyMongo
+#from flask.ext.pymongo import PyMongo
 
 SKIP = [
   "sudo",
@@ -12,9 +12,9 @@ SKIP = [
 ]
 
 app = Flask(__name__)
-app.config['MONGO_DBNAME'] = 'restdb'
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/restdb'
-mongo = PyMongo(app)
+#app.config['MONGO_DBNAME'] = 'restdb'
+#app.config['MONGO_URI'] = 'mongodb://localhost:27017/restdb'
+#mongo = PyMongo(app)
 
 
 @app.route('/')
@@ -50,9 +50,9 @@ def getReslut():
             stderr=STDOUT)
         output = event.communicate()
         output = output[0]
-    history = mongo.db.history
-    history.insert(item)
-    print [i for i in mongo.db.history.find()]
+    #history = mongo.db.history
+    #history.insert(item)
+    #print [i for i in mongo.db.history.find()]
     return json.dumps({'status':'OK', 'resp':output})
 
 if __name__=="__main__":

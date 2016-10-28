@@ -45,7 +45,7 @@ $(function(){
           }
         })
         .autocomplete({
-          minLength:2,
+          minLength:1,
           delay:500,
           source: function(request, response) {
             var results = $.ui.autocomplete.filter(commands, request.term);
